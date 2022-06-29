@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>API REST - VIDEOTURORIAL I</h1>
+        <br/>
+        <div id="elements"></div>
+    </body>
+
+    <!--Afegirem el codi del Ajax en aquest scrip Carregarem el motor de recerca AJAX-->
+    <!--Farem la peticio de dedes amb el object XMLHTTPRequest-->
+
+    <script>
+
+        var xmlhttp = new XMLHttpRequest();
+        var url = 'https://jsonplaceholder.typicode.com/posts';
+
+        xmlhttp.onreadystatechange = function(){
+
+            if (this.readyState==4 && this.status == 200){
+                
+                var myArr = JSON.parse(this.responseText);
+                console.log(myArr);
+
+                myFuntion(myArr)
+
+            }
+        };
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        
+        console.log(xmlhttp);
+
+        function myFuntion(array){
+
+            var sortida = "";
+
+            for(var i = 0; i<array.length; i++){
+                sortida += array[i].title + "<br\>";
+            }
+            document.getElementById("elements").innerHTML = sortida
+
+        };
+
+
+    </script>
+
+
+
+
+
+</html>
